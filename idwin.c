@@ -95,10 +95,10 @@ static int bitmap_set_bit(uint8_t *bmp, uint32_t num)
 
 static void idwin_enforce_wat(struct idwin *ctx, uint32_t num)
 {
-	uint32_t shift = 0;
+	if (num - ctx->base < ctx->hi_wat)
+		return;
 	
-	if (num - ctx->base >= ctx->hi_wat)
-		shift = num - ctx->base - ctx->lo_wat;
+	uint32_t shift = num - ctx->base - ctx->lo_wat;
 	
 	bitmap_zero(ctx->bitmap, ctx->winsize, ctx->offset, shift);
 	ctx->base += shift;
