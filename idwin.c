@@ -1,7 +1,7 @@
-#include "idwin.h"
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include "idwin.h"
 
 #define BITS_PER_BYTE 8
 
